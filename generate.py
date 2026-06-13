@@ -4,17 +4,15 @@ import os
 import sys
 
 NUM_ROWS = 50
-
-
-COLUMNS = ["COLUMN_1", "COLUMN_2", "COLUMN_3", "COLUMN_4"]
+COLUMNS = ["Фамилия", "Регион", "Сумма продаж", "Процент с продаж"]
 
 def generate_row():
-
+    sales = random.randint(2000, 100000)
     return {
-        "COLUMN_1": random.randint(0, 100),
-        "COLUMN_2": round(random.uniform(1.5, 9.9), 2),
-        "COLUMN_3": random.randint(0, 100),
-        "COLUMN_4": random.choice(["A", "B", "C"]),
+        "Фамилия": random.choice(["Лобанов", "Микаэлян", "Мартынов", "Баринов", "Джекович"]),
+        "Регион": random.choice(["Сахалин", "Москва", "Саратов", "Пятигорск", "Омск"]),
+        "Сумма продаж": sales,
+        "Процент с продаж": sales*0.2,
     }
 
 OUTPUT_DIR = sys.argv[1] if len(sys.argv) > 1 else "/data"
