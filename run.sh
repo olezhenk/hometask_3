@@ -19,4 +19,16 @@ case "$1" in
         mkdir -p ./data
         docker run --rm -v "$(pwd)/data:/data" csv-reporter node report.js /data/data.csv /data/report.html
         ;;
+    structure)
+        find . -not -path "*/\.*" -not -path "*/node_modules/*" -not -path "*/__pycache__/*" -type f -o -type d | sort
+        ;;
+    clear_data)
+        rm -f ./data/*.csv ./data/*.html
+        ;;
+    inside_generator)
+        docker run --rm -v "$(pwd)/data:/data" csv-generator ls -la /data
+        ;;
+    inside_reporter)
+        docker run --rm -v "$(pwd)/data:/data" csv-reporter ls -la /data
+        ;;
 esac
