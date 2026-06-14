@@ -12,4 +12,11 @@ case "$1" in
         mkdir -p ./local_data
         python generate.py ./local_data
         ;;
+    build_reporter)
+        docker build -f Dockerfile.reporter -t csv-reporter .
+        ;;
+    run_reporter)
+        mkdir -p ./data
+        docker run --rm -v "$(pwd)/data:/data" csv-reporter node report.js /data/data.csv /data/report.html
+        ;;
 esac
